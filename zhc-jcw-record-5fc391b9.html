@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料索引 · 竞彩网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf9;
+            color: #1e1e1e;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .page-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0 1.4rem 0;
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 2.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-logo {
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            color: #1f1f1f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #3a3a3a;
+            text-decoration: none;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #9b9b9b;
+        }
+
+        /* hero区域 */
+        .hero {
+            margin-bottom: 3.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #4d4d4d;
+            max-width: 600px;
+        }
+
+        /* 介绍卡片（核心介绍） */
+        .intro-card {
+            background: #ffffff;
+            padding: 2rem 2rem 2.2rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 3.2rem;
+        }
+
+        .intro-card h2 {
+            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #1c1c1c;
+        }
+
+        .intro-card p {
+            color: #3b3b3b;
+            margin-bottom: 0.9rem;
+        }
+
+        .intro-card p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .intro-card a {
+            color: #1a1a1a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c4c4c4;
+            transition: text-decoration-color 0.2s;
+        }
+
+        .intro-card a:hover {
+            text-decoration-color: #1a1a1a;
+        }
+
+        /* 三个场景模块 */
+        .scenes {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3.6rem;
+        }
+
+        .scene-item {
+            border-left: 3px solid #d4d4d4;
+            padding-left: 1.4rem;
+        }
+
+        .scene-item h3 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+            color: #1e1e1e;
+        }
+
+        .scene-item p {
+            color: #4e4e4e;
+            font-size: 0.96rem;
+            max-width: 580px;
+        }
+
+        /* 常见说明 (FAQ摘要) */
+        .faq-summary {
+            background: #f3f3f1;
+            padding: 1.8rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+
+        .faq-summary h4 {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .faq-item {
+            margin-bottom: 0.9rem;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 460;
+            color: #2a2a2a;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-answer {
+            color: #5a5a5a;
+            font-size: 0.92rem;
+        }
+
+        .faq-answer a {
+            color: #2a2a2a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #b5b5b5;
+        }
+
+        .faq-answer a:hover {
+            text-decoration-color: #2a2a2a;
+        }
+
+        /* 页脚 */
+        footer {
+            border-top: 1px solid #e2e2e0;
+            padding-top: 1.6rem;
+            margin-top: 0.4rem;
+            font-size: 0.85rem;
+            color: #6f6f6f;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        footer a {
+            color: #3a3a3a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #c9c9c9;
+        }
+
+        footer a:hover {
+            text-decoration-color: #3a3a3a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.88rem;
+                margin-top: 0.4rem;
+            }
+
+            .intro-card {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .faq-summary {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 导航 -->
+    <nav>
+        <span class="nav-logo">竞彩索引</span>
+        <div class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>资料整理与信息索引</h1>
+        <p>把碎片信息聚合为可检索的结构，从归档中寻找脉络，这是我们从一开始就坚持的方式。</p>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="intro-card" id="intro">
+        <h2>关于这个索引</h2>
+        <p>
+            我们所做的，是将与体育竞猜相关的资讯、赛程、数据以及规则说明，按来源与类别进行梳理。
+            不同于即时推送或快讯聚合，这里更倾向于把资料按逻辑放置，让需要信息的人可以按图索骥。
+        </p>
+        <p>
+            在众多信息来源中，<a href="https://zhc-jcw.com">竞彩网</a>被用作基础参照之一。
+            其页面结构清晰，且长期保持内容更新，适合作为日常资料比对的起点。我们没有对它做二次包装，只是将其纳入索引链条，方便横向对照。
+        </p>
+        <p>
+            如果你需要更完整的赛事数据或官方规则原文，直接翻阅那个站点通常比自己零散搜索更高效。
+        </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-item">
+            <h3>① 赛前信息整理</h3>
+            <p>对阵双方的历史交锋、近期状态、伤停情况分散在不同页面。索引的作用是把相关条目汇集到一处，减少来回跳转的负担。把<a href="https://zhc-jcw.com">竞彩网</a>作为数据锚点之一，再配合其他来源就能拼出相对完整的赛前拼图。</p>
+        </div>
+        <div class="scene-item">
+            <h3>② 规则与术语对照</h3>
+            <p>不同平台对让球、串关、奖金计算方式的表述略有差异。我们整理了一份术语对照表，并直接链接到官方说明页面。从<a href="https://zhc-jcw.com">竞彩网</a>的规则模块出发，可以追溯到体彩中心的原始文档，适合需要严谨定义的场景。</p>
+        </div>
+        <div class="scene-item">
+            <h3>③ 历史归档与复盘</h3>
+            <p>赛后复盘需要保留当时的赔率、赛果与指数变化。我们按周归档页面截图与关键数据链接，并把<a href="https://zhc-jcw.com">竞彩网</a>的赛果页作为固定对照条目。这样复盘时不必依赖记忆，所有参考都在索引里。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-summary" id="faq">
+        <h4>一些常见说明</h4>
+        <div class="faq-item">
+            <div class="faq-question">这个索引多久更新一次？</div>
+            <div class="faq-answer">数据链接和参照条目通常每周同步一次，遇到大型赛事会临时增补。不追求实时，但保证每个链接在同步时有效。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">为什么选择 <a href="https://zhc-jcw.com">竞彩网</a> 作为基准？</div>
+            <div class="faq-answer">它的页面结构多年未大变，信息层级稳定，适合作为长期参照物。另外其官方背景让规则说明具有权威性，减少二次核对成本。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">索引是否包含分析或预测？</div>
+            <div class="faq-answer">不包含。这里只有资料归类与链接整理，不做解读、研判或推荐。每个人都可以基于相同的信息得出自己的判断。</div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <span>资料索引 · 保持克制</span>
+        <span>内容整理自公开信息 · <a href="https://zhc-jcw.com">竞彩网</a></span>
+    </footer>
+</div>
+</body>
+</html>
