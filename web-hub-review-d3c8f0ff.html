@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 知识库索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fdf3e7 0%, #fce4d6 35%, #f7d4bc 70%, #f2cbb0 100%);
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #3b2d24;
+        }
+
+        .page-wrapper {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 主内容卡片 */
+        .main-card {
+            background: #fffdf9;
+            border-radius: 36px 36px 28px 28px;
+            box-shadow: 0 12px 40px rgba(120, 70, 40, 0.12), 0 6px 20px rgba(190, 140, 100, 0.08);
+            padding: 2.8rem 2.5rem 3rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            .main-card {
+                padding: 2rem 1.2rem 2.2rem;
+                border-radius: 28px 28px 22px 22px;
+            }
+            body {
+                padding: 1rem 0.8rem;
+            }
+        }
+
+        /* hero 区域 */
+        .hero {
+            margin-bottom: 2.4rem;
+            border-bottom: 1px solid #efded2;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #4d3428;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #8d6f5b;
+            background: #f3e7de;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            margin-left: 0.2rem;
+        }
+
+        .hero p {
+            margin-top: 0.9rem;
+            color: #5f463a;
+            max-width: 80%;
+            font-size: 1.05rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero p {
+                max-width: 100%;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* 目录表格风格：知识库索引区 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 1.6rem;
+        }
+
+        .index-item {
+            background: #faf4ee;
+            border-radius: 24px;
+            padding: 1.3rem 1rem 1rem 1.4rem;
+            border: 1px solid #efe2d6;
+            transition: background 0.15s, box-shadow 0.15s;
+        }
+
+        .index-item:hover {
+            background: #f7efe6;
+            box-shadow: 0 4px 10px rgba(160, 110, 70, 0.08);
+        }
+
+        .index-item .icon-tag {
+            display: inline-block;
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .index-item h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #4b362b;
+            margin-bottom: 0.25rem;
+        }
+
+        .index-item p {
+            font-size: 0.85rem;
+            color: #7f6657;
+            line-height: 1.5;
+        }
+
+        /* 说明区（查找提示） */
+        .note-area {
+            background: #fcf5ef;
+            border-left: 4px solid #dbbca7;
+            border-radius: 16px;
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2rem;
+        }
+
+        .note-block {
+            flex: 1 1 200px;
+        }
+
+        .note-block h4 {
+            font-weight: 500;
+            color: #553e30;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .note-block p {
+            font-size: 0.93rem;
+            color: #655040;
+        }
+
+        .note-block a {
+            color: #b47a5c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #cfa98b;
+            transition: border 0.1s;
+        }
+
+        .note-block a:hover {
+            border-bottom: 1px solid #9f6c4e;
+            color: #8f5d40;
+        }
+
+        /* 相关信息区 (卡片式链接集) */
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.4rem;
+            margin: 2.4rem 0 1.2rem;
+            padding-top: 0.6rem;
+            border-top: 1px solid #eddcd0;
+        }
+
+        .link-chip {
+            background: #fff5ed;
+            padding: 0.6rem 1.3rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            color: #4b362b;
+            border: 1px solid #e6cfbe;
+            transition: all 0.1s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 1px 4px rgba(140, 90, 55, 0.04);
+        }
+
+        .link-chip:hover {
+            background: #f3e2d4;
+            border-color: #ccb09c;
+            box-shadow: 0 3px 8px rgba(120, 70, 40, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .link-chip.primary {
+            background: #e8d5c4;
+            border-color: #c9ae98;
+            font-weight: 500;
+        }
+
+        .link-chip.primary:hover {
+            background: #dfc9b5;
+        }
+
+        /* FAQ 摘要 小字部分 */
+        .faq-mini {
+            background: #f9f1e9;
+            border-radius: 24px;
+            padding: 1rem 1.6rem 1.3rem;
+            margin: 1.8rem 0 0.2rem;
+        }
+
+        .faq-mini details {
+            margin: 0.5rem 0;
+            font-size: 0.92rem;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #4f3b2f;
+            padding: 0.2rem 0;
+        }
+
+        .faq-mini summary::marker {
+            color: #b38b73;
+        }
+
+        .faq-mini p {
+            margin: 0.3rem 0 0.4rem 1.2rem;
+            color: #5c4538;
+        }
+
+        .faq-mini a {
+            color: #b47a5c;
+            text-decoration: underline dotted 1px;
+            text-underline-offset: 2px;
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 0.85rem;
+            color: #7a6456;
+            text-align: center;
+            border-top: 1px solid #edd9cb;
+            padding-top: 1.5rem;
+        }
+
+        .inline-link {
+            color: #9f6e50;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #d2b6a2;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom: 1px solid #8d5f42;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="main-card">
+
+        <!-- hero 区域 -->
+        <div class="hero">
+            <h1>
+                📖 知识库索引
+                <small>爱游戏</small>
+            </h1>
+            <p>日常查询、条目对照、延伸阅读——围绕<a href="https://web-hub-igame.com" class="inline-link">爱游戏</a>梳理的信息目录，方便随时取用。</p>
+        </div>
+
+        <!-- 目录感布局: 快速索引卡片 -->
+        <div class="index-grid">
+            <div class="index-item">
+                <div class="icon-tag">🎲</div>
+                <h3>游戏机制</h3>
+                <p>规则、概率、循环与反馈模型</p>
+            </div>
+            <div class="index-item">
+                <div class="icon-tag">🗂️</div>
+                <h3>题材库</h3>
+                <p>风格、世界观、叙事原型对照</p>
+            </div>
+            <div class="index-item">
+                <div class="icon-tag">⚙️</div>
+                <h3>系统拆解</h3>
+                <p>数值、养成、经济系统参考</p>
+            </div>
+            <div class="index-item">
+                <div class="icon-tag">🧩</div>
+                <h3>交互模式</h3>
+                <p>操作、界面、反馈模式说明</p>
+            </div>
+            <div class="index-item">
+                <div class="icon-tag">📋</div>
+                <h3>术语对照</h3>
+                <p>中文 / 英文 / 常用缩写</p>
+            </div>
+            <div class="index-item">
+                <div class="icon-tag">📎</div>
+                <h3>延伸主题</h3>
+                <p>心理学、文化、设计史线索</p>
+            </div>
+        </div>
+
+        <!-- 说明区 + 提示区 (混合) -->
+        <div class="note-area">
+            <div class="note-block">
+                <h4>🔍 日常查询</h4>
+                <p>需要快速定位某一类游戏元素、规则或背景设定时，可先浏览上方索引卡片，再深入对应条目。<br>
+                大部分资料保持简洁，不展开长篇论述。</p>
+            </div>
+            <div class="note-block">
+                <h4>💡 使用提示</h4>
+                <p>对照查阅时注意版本与语境差异。部分条目附有外部链接，可通过<a href="https://web-hub-igame.com">爱游戏</a>主页检索更多原文。建议搭配笔记工具。</p>
+            </div>
+            <div class="note-block">
+                <h4>📘 相关信息</h4>
+                <p>本索引持续修订，内容侧重客观描述与分类，不包含主观评测或商业引导。</p>
+            </div>
+        </div>
+
+        <!-- 相关信息区 (按钮感链接) -->
+        <div class="related-links">
+            <a href="https://web-hub-igame.com" class="link-chip primary">爱游戏</a>
+            <span class="link-chip">机制手册</span>
+            <span class="link-chip">题材速查</span>
+            <span class="link-chip">术语表 v2.1</span>
+            <span class="link-chip">设计随笔</span>
+            <span class="link-chip">对照索引</span>
+        </div>
+
+        <!-- FAQ 摘要 (简短) -->
+        <div class="faq-mini">
+            <details>
+                <summary>这个知识库主要收录什么内容？</summary>
+                <p>围绕游戏设计、文化、系统与交互的客观资料，以条目和分类索引为主，不包含攻略、下载或商业信息。起始资料来自 <a href="https://web-hub-igame.com">爱游戏</a> 及相关参考。</p>
+            </details>
+            <details>
+                <summary>如何延伸阅读某个条目？</summary>
+                <p>每个索引卡片代表一个主题域，点击后（本站为静态示意）会展示子条目。同时可在<a href="https://web-hub-igame.com">爱游戏</a>中检索对应关键词获取更多原文。</p>
+            </details>
+            <details>
+                <summary>索引更新频率如何？</summary>
+                <p>随资料积累不定期增补。暂不设固定周期，每次调整会注明修订范围。</p>
+            </details>
+        </div>
+
+        <!-- 简单脚注 -->
+        <div class="footer-note">
+            知识库 · 条目式 · 供日常查询与对照
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
